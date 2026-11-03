@@ -32,9 +32,12 @@ import TarjetaProhibido from "./TarjetaProhibido.astro";
 import TarjetaConfirmar from "./TarjetaConfirmar.astro";
 import TarjetaDespedida from "./TarjetaDespedida.astro";
 import Versiculo from "./versiculo.astro";
+import LinkNoDisponible from "./LinkNoDisponible.astro";
 ---
 
 <Layout title="Marcela & Fernando">
+    <!-- Sistema de invitados: tapa la invitación si el link ?i= fue borrado -->
+    <LinkNoDisponible />
     <Portada />
 
     <div id="contenido-principal">
