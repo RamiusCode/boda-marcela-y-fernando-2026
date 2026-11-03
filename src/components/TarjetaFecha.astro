@@ -1,0 +1,97 @@
+---
+// Aparta la fecha + cuenta regresiva
+---
+<div class="tarjeta-fecha w-full relative">
+  <div class="bg-[#f5f0e8] shadow-xl overflow-hidden" style="border-radius: 90px 90px 0 0;">
+    <div class="px-3 pt-8 pb-20 text-center">
+
+      <div class="flex justify-center mb-2">
+        <img src="/imagenes/calendario.png" alt="Calendario" class="w-10 h-10 object-contain vino-filter" />
+      </div>
+
+      <h2 class="font-cormorant text-base text-[#c8b194] uppercase font-semibold leading-tight mb-0.5">
+        Aparta
+      </h2>
+      <h2 class="font-cormorant text-base text-[#c8b194] uppercase font-semibold leading-tight mb-1">
+        la Fecha
+      </h2>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c8b194]"></div>
+        <span class="text-[#c8b194] text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c8b194]"></div>
+      </div>
+
+      <p class="font-cormorant text-sm tracking-[0.25em] text-[#5c1f2e] uppercase">Sábado</p>
+      <p class="font-soage text-[2.3rem] text-[#c8b194] leading-tight">05</p>
+      <p class="font-cormorant text-sm tracking-[0.25em] text-[#5c1f2e] uppercase mb-3">Diciembre 2026</p>
+
+      <!-- Cuenta regresiva -->
+      <p class="font-cormorant text-sm text-[#5c1f2e]/70 uppercase tracking-[0.2em] mb-1">Faltan</p>
+
+      <div class="grid grid-cols-4 gap-1">
+        <div class="bg-[#5c1f2e] py-2.5">
+          <p id="cd-dias" class="font-crimson text-2xl text-[#c8b194] font-semibold leading-none">00</p>
+          <p class="font-cormorant text-[11px] text-white/70 uppercase">Días</p>
+        </div>
+        <div class="bg-[#5c1f2e] py-2.5">
+          <p id="cd-horas" class="font-crimson text-2xl text-[#c8b194] font-semibold leading-none">00</p>
+          <p class="font-cormorant text-[11px] text-white/70 uppercase">Hrs</p>
+        </div>
+        <div class="bg-[#5c1f2e] py-2.5">
+          <p id="cd-minutos" class="font-crimson text-2xl text-[#c8b194] font-semibold leading-none">00</p>
+          <p class="font-cormorant text-[11px] text-white/70 uppercase">Min</p>
+        </div>
+        <div class="bg-[#5c1f2e] py-2.5">
+          <p id="cd-segundos" class="font-crimson text-2xl text-[#c8b194] font-semibold leading-none">00</p>
+          <p class="font-cormorant text-[11px] text-white/70 uppercase">Seg</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .vino-filter {
+    filter: brightness(0) saturate(100%) invert(14%) sepia(56%) saturate(1457%) hue-rotate(309deg) brightness(90%) contrast(93%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo(".tarjeta-fecha",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-fecha", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+
+  // ═══ CUENTA REGRESIVA — 05 de diciembre de 2026, 17:30 ═══
+  const fechaBoda = new Date(2026, 11, 5, 17, 30, 0).getTime();
+
+  const set = (id: string, valor: number) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = valor.toString().padStart(2, "0");
+  };
+
+  const actualizar = () => {
+    const diferencia = fechaBoda - new Date().getTime();
+
+    if (diferencia <= 0) {
+      set("cd-dias", 0); set("cd-horas", 0); set("cd-minutos", 0); set("cd-segundos", 0);
+      return;
+    }
+
+    set("cd-dias", Math.floor(diferencia / (1000 * 60 * 60 * 24)));
+    set("cd-horas", Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+    set("cd-minutos", Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60)));
+    set("cd-segundos", Math.floor((diferencia % (1000 * 60)) / 1000));
+  };
+
+  actualizar();
+  setInterval(actualizar, 1000);
+</script>

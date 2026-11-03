@@ -1,0 +1,53 @@
+---
+---
+<div class="tarjeta-padres w-full">
+  <div class="bg-[#6e2436] shadow-xl overflow-hidden">
+    <div class="px-3 py-6 text-center">
+
+      <div class="flex justify-center mb-2">
+        <img src="/iconos/Anillos.png" alt="Anillos" class="w-10 h-10 object-contain dorado-filter" />
+      </div>
+
+      <h2 class="font-cormorant text-xl text-[#c8b194] uppercase font-semibold mb-1">Nuestros Padres</h2>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c8b194]/25"></div>
+        <span class="text-[#c8b194]/40 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c8b194]/25"></div>
+      </div>
+
+      <p class="font-cormorant text-[10px] text-[#c8b194]/60 uppercase mb-0.5">Padres del novio</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Martha Alby Callaú</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight mb-3">Ruddy Antelo Franco (+)</p>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c8b194]/25"></div>
+        <span class="text-[#c8b194]/40 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c8b194]/25"></div>
+      </div>
+
+      <p class="font-cormorant text-[10px] text-[#c8b194]/60 uppercase mb-0.5">Padres de la novia</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Martin Alex Sosa Bramini</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Mireya Martins Paz</p>
+
+    </div>
+  </div>
+</div>
+
+<style>
+  .dorado-filter {
+    filter: brightness(0) saturate(100%) invert(73%) sepia(18%) saturate(500%) hue-rotate(345deg) brightness(102%) contrast(90%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-padres",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-padres", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

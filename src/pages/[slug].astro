@@ -1,0 +1,18 @@
+---
+// src/pages/[slug].astro
+// Genera una invitación personalizada por cada invitado de lista-invitados.txt
+// Ejemplo:  Familia Antelo Sosa | 2   ->   /familia-antelo-sosa/
+import Invitacion from "../components/Invitacion.astro";
+import { getInvitados } from "../data/invitados";
+
+export function getStaticPaths() {
+  return getInvitados().map((invitado) => ({
+    params: { slug: invitado.slug },
+    props: { nombre: invitado.nombre, pases: invitado.pases },
+  }));
+}
+
+const { nombre, pases } = Astro.props;
+---
+
+<Invitacion nombre={nombre} pases={pases} />

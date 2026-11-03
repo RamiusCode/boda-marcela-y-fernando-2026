@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════
+   VISTA TIPO CELULAR EN TODOS LOS DISPOSITIVOS
+   Se anulan los breakpoints de Tailwind (sm, md, lg, xl, 2xl)
+   poniéndolos en un ancho imposible, así las clases md:* / lg:*
+   nunca se activan y la invitación se ve igual que en el celular
+   en computadora, tablet, etc.
+   ═══════════════════════════════════════════════════════════ */
+@theme {
+  --breakpoint-sm: 9999px;
+  --breakpoint-md: 9999px;
+  --breakpoint-lg: 9999px;
+  --breakpoint-xl: 9999px;
+  --breakpoint-2xl: 9999px;
+}
+
+
+/* Fuente personalizada Tangerine */
+@font-face {
+  font-family: 'Tangerine Bold';
+  src: url('/fonts/Tangerine_Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+.font-tangerine {
+  font-family: 'Tangerine Bold', cursive !important;
+}
+
+/* Para el nombre */
+.font-great-vibes {
+  font-family: 'Great Vibes', cursive !important;
+}
+
+/* Para mis XV años */
+.font-crimson {
+  font-family: 'Crimson Text', serif !important;
+}
+
+/* Para dedicatoria*/
+.font-cormorant {
+  font-family: 'Cormorant Garamond', serif !important;
+}
+
+/*Para texto con Charm */
+.font-charm {
+  font-family: 'Charm', cursive !important;
+}
+
+/* Fuente personalizada Soage */
+@font-face {
+  font-family: 'Soage';
+  src: url('/fonts/Soage PersonalUseOnly.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font-soage {
+  font-family: 'Soage', cursive !important;
+}

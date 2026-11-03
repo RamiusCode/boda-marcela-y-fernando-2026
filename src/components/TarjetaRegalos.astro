@@ -1,0 +1,42 @@
+---
+---
+<div class="tarjeta-regalos w-full">
+  <div class="bg-white shadow-xl overflow-hidden">
+    <div class="px-3 py-6 text-center">
+
+      <div class="flex justify-center mb-2">
+        <img src="/iconos/lluvia-sobre.png" alt="Regalos" class="w-10 h-10 object-contain vino-filter" />
+      </div>
+
+      <h2 class="font-cormorant text-base text-[#c8b194] uppercase font-semibold leading-tight mb-1">Mesa de Regalos</h2>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c8b194]"></div>
+        <span class="text-[#c8b194] text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c8b194]"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#5c1f2e] leading-tight mb-2">Contar con ustedes en nuestra boda es el mejor regalo. Pero si desean pueden hacernos un obsequio en efectivo</p>
+      <p class="font-cormorant text-sm text-[#c8b194] font-semibold leading-tight mb-1">¡Lluvia de sobres!</p>
+      <p class="font-cormorant text-sm text-[#5c1f2e] leading-tight mb-0">Habrá un buzón en la recepción</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .vino-filter {
+    filter: brightness(0) saturate(100%) invert(14%) sepia(56%) saturate(1457%) hue-rotate(309deg) brightness(90%) contrast(93%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(".tarjeta-regalos",
+    { opacity: 0, y: 40 },
+    { opacity: 1, y: 0, duration: 1, ease: "power3.out",
+      scrollTrigger: { trigger: ".tarjeta-regalos", start: "top 90%", toggleActions: "play none none reset" }
+    }
+  );
+</script>

@@ -1,0 +1,10 @@
+---
+// src/pages/index.astro
+// Invitación GENÉRICA: sin nombre de invitado y con 1 pase.
+// Es la que se usa cuando no querés personalizar (o para compartir en grupo).
+// Las invitaciones personalizadas se generan en src/pages/[slug].astro
+// a partir de lista-invitados.txt (raíz del proyecto).
+import Invitacion from "../components/Invitacion.astro";
+---
+
+<Invitacion pases={1} />

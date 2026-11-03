@@ -1,0 +1,16 @@
+═══════════════════════════════════════════════════════════════
+  LISTA DE INVITADOS — Marcela & Fernando
+  http://localhost:4321
+  0 invitaciones · 0 pases en total
+═══════════════════════════════════════════════════════════════
+
+INVITADO  PASES  LINK
+--------  -----  ----
+
+───────────────────────────────────────────────────────────────
+GENÉRICA (sin nombre, 1 pase)
+  http://localhost:4321/
+
+PANEL DE ENLACES (uso interno, con botón de copiar)
+  http://localhost:4321/enlaces/
+───────────────────────────────────────────────────────────────

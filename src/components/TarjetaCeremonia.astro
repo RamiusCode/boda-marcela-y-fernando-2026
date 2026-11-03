@@ -1,0 +1,64 @@
+---
+
+---
+
+<div class="tarjeta-ceremonia w-full">
+  <div class="bg-[#5c1f2e] shadow-xl overflow-hidden">
+    <div class="px-3 pt-6 pb-12 text-center">
+      <h2 class="font-cormorant text-base text-[#c8b194] uppercase font-semibold leading-tight mb-0.5">
+        Con la bendición de Dios
+      </h2>
+      <h2 class="font-cormorant text-base text-[#c8b194] uppercase font-semibold leading-tight mb-1">
+        y nuestros padres
+      </h2>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c8b194]/25"></div>
+        <span class="text-[#c8b194]/40 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c8b194]/25"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#c8b194]/80 uppercase mb-1">Padres del novio</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Martha Alby Callaú</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight mb-3">Ruddy Antelo Franco (+)</p>
+
+      <div class="flex items-center gap-2 mb-2">
+        <div class="flex-1 h-px bg-[#c8b194]/25"></div>
+        <span class="text-[#c8b194]/40 text-[10px]">✦</span>
+        <div class="flex-1 h-px bg-[#c8b194]/25"></div>
+      </div>
+
+      <p class="font-cormorant text-sm text-[#c8b194]/80 uppercase mb-1">Padres de la novia</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Martin Alex Sosa Bramini</p>
+      <p class="font-cormorant text-sm text-white/90 leading-tight">Mireya Martins Paz</p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .dorado-filter {
+    filter: brightness(0) saturate(100%) invert(73%) sepia(18%) saturate(500%)
+      hue-rotate(345deg) brightness(102%) contrast(90%);
+  }
+</style>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.fromTo(
+    ".tarjeta-ceremonia",
+    { opacity: 0, y: 40 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: ".tarjeta-ceremonia",
+        start: "top 90%",
+        toggleActions: "play none none reset",
+      },
+    },
+  );
+</script>

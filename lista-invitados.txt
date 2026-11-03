@@ -1,0 +1,20 @@
+# ═══════════════════════════════════════════════════════════════
+# LISTA DE INVITADOS — Marcela & Fernando
+# ═══════════════════════════════════════════════════════════════
+#
+# Un invitado por línea, con este formato:
+#
+#     Nombre del invitado | pases | slug
+#
+#   • Nombre : como aparecerá en la invitación. OBLIGATORIO.
+#   • pases  : número de personas. Si lo dejás vacío, se asume 1.
+#   • slug   : OPCIONAL. Es la parte final del link.
+#              Si lo dejás vacío se genera solo a partir del nombre
+#              (sin tildes, en minúsculas y con guiones).
+#
+# Las líneas que empiezan con # son comentarios y se ignoran.
+#
+# Después de editar:  npm run build   y luego   npm run enlaces
+# Panel con todos los links:  /enlaces
+# ═══════════════════════════════════════════════════════════════
+

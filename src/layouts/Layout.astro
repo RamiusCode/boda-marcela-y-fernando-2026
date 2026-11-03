@@ -1,0 +1,116 @@
+---
+// src/layouts/Layout.astro
+import "../styles/global.css";
+export interface Props {
+  title: string;
+}
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es" class="m-0 p-0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light only" />
+    <link rel="icon" type="image/png" href="/iconos/Anillos.png" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Crimson+Text:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Crimson+Text:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Ancho de la columna tipo celular. Lo usan <main> y la textura de fondo,
+         así nunca se desalinean. */
+      :root {
+        --ancho-celular: 430px;
+      }
+
+      /* Forzar modo claro y evitar dark mode del navegador */
+      html {
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        color-scheme: light only;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100vh;
+        overflow-x: hidden;
+        color-scheme: light only;
+        background-color: #ffffff;
+      }
+
+      /* ═══ TEXTURA DE FONDO ═══
+         Va en una capa `position: fixed` propia y NO en el body con
+         `background-attachment: fixed`, porque Safari de iOS mide ese fondo
+         contra el alto de TODA la página (unos 20.000px acá) en vez del alto de
+         la pantalla, y estiraba la textura hasta dejarla con un zoom enorme.
+         Un elemento fixed sí se mide contra la pantalla en todos los navegadores. */
+      .fondo-fijo {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        /* 100lvh = alto máximo de la pantalla: no cambia cuando la barra de
+           direcciones del celular aparece o desaparece al scrollear. */
+        height: 100lvh;
+        z-index: 0;
+        pointer-events: none;
+        background-image: url("/imagenes/BlancoTextura.webp");
+        /* Cubre SÓLO el ancho del celular (no toda la pantalla) y se estira en
+           vertical para acompañar a los celulares largos. En pantallas más
+           angostas que --ancho-celular usa el 100% disponible. */
+        background-size: min(100%, var(--ancho-celular)) 100%;
+        background-position: center top;
+        background-repeat: no-repeat;
+      }
+
+      /* ═══ COLUMNA TIPO CELULAR CENTRADA EN TODA PANTALLA ═══ */
+      main {
+        background: transparent !important;
+        width: 100%;
+        max-width: var(--ancho-celular);
+        margin: 0 auto;
+        min-height: 100vh;
+        position: relative;
+        z-index: 1;
+        overflow-x: hidden;
+        box-shadow: 0 0 60px rgba(92, 31, 46, 0.12);
+      }
+    </style>
+  </head>
+  <body class="min-h-screen m-0 p-0">
+    <div class="fondo-fijo" aria-hidden="true"></div>
+    <main class="m-0 p-0 overflow-x-hidden">
+      <slot />
+    </main>
+  </body>
+</html>
