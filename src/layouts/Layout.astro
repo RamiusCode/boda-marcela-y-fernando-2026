@@ -3,8 +3,16 @@
 import "../styles/global.css";
 export interface Props {
   title: string;
+  descripcion?: string;
 }
-const { title } = Astro.props;
+const {
+  title,
+  descripcion = "Te invitamos a nuestra boda · Sábado 05 de diciembre de 2026",
+} = Astro.props;
+
+// Vista previa al compartir el link (WhatsApp, Facebook): necesita URL completa
+const imagenPrevia = new URL("/imagenes/miniatura-whatsapp.jpg", Astro.site);
+const urlCanonica = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -16,6 +24,27 @@ const { title } = Astro.props;
     <link rel="icon" type="image/png" href="/iconos/Anillos.png" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <meta name="description" content={descripcion} />
+    <link rel="canonical" href={urlCanonica} />
+
+    <!-- Vista previa de WhatsApp / redes -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Marcela & Fernando" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:url" content={urlCanonica} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:image" content={imagenPrevia} />
+    <meta property="og:image:secure_url" content={imagenPrevia} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Invitación a la boda de Marcela & Fernando" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={descripcion} />
+    <meta name="twitter:image" content={imagenPrevia} />
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
